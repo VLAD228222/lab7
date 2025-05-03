@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace lab7
 {
@@ -9,9 +9,7 @@ namespace lab7
             const int size = 10;
             int[] numbers = new int[size];
 
-            Console.WriteLine("Автор проєкту:Дейко Влад\n");
-
-            // Введення масиву
+            Console.WriteLine("Автор проєкту: Дейко Влад\n");
             for (int i = 0; i < size; i++)
             {
                 bool isValid;
@@ -25,10 +23,15 @@ namespace lab7
                 }
                 while (!isValid);
             }
-
-            // Вибір дії: сума або добуток
-            Console.Write("\nВиберіть операцію (1 - сума, 2 - добуток): ");
-            string choice = Console.ReadLine();
+            string choice;
+            do
+            {
+                Console.Write("\nВиберіть операцію (1 - сума, 2 - добуток): ");
+                choice = Console.ReadLine();
+                if (choice != "1" && choice != "2")
+                    Console.WriteLine("Невірний вибір операції! Спробуйте ще раз.");
+            }
+            while (choice != "1" && choice != "2");
 
             // Пошук індексів мінімального та максимального елементів
             int minIndex = 0, maxIndex = 0;
@@ -60,10 +63,6 @@ namespace lab7
                 for (int i = start; i <= end; i++)
                     product *= numbers[i];
                 Console.WriteLine($"Добуток елементів між мінімальним і максимальним: {product}");
-            }
-            else
-            {
-                Console.WriteLine("Невірний вибір операції.");
             }
 
             Console.ReadLine();
